@@ -137,8 +137,8 @@ fs.exists('./plugins/index.js', function(exists) {
 
 module.exports = app;
 if (!module.parent) {
-  var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || config.server.port;
-  server.listen(port, function(){
+  var port = process.env.OPENSHIFT_NODEJS_PORT || config.server.port;
+  server.listen(port, process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1', function(){
     console.log("Express server listening on port %d in %s mode", port, app.settings.env);
   });
 }
